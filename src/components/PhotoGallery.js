@@ -3,22 +3,20 @@ import 'photoswipe/dist/photoswipe.css'
 import 'photoswipe/dist/default-skin/default-skin.css'
 import ImageGallery from 'react-image-gallery';
 import "../styles/PhotoGallery.css"
-const images = [
-  {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-];
+import { useHistory, useParams } from "react-router-dom";
+import ProductRecommendation from './ProductRecommendation';
 
-export default function PhotoGallery() {
+const _PhotoGallery = (props) => {
+  const {
+    products
+  } = props
+  let history = useHistory();
+  let { id } = useParams();
+  const product = products[id]
+  let images = [{
+    original: product.image_urls[0],
+    thumbnail: product.image_urls[0],
+  }]
   return (
     <div>
       <div className="product-promotion flexbox justify-content-center">
@@ -29,8 +27,11 @@ export default function PhotoGallery() {
           <ImageGallery items={images} thumbnailPosition="left" />
         </div>
         <div id="product-content" className="flexbox flex-column gap-1">
+          <div>
+            <div onClick={history.goBack}>Go Back</div>
+          </div>
           <div className="product-heading">
-            Amazon Basics 48 Pack AA High-Performance Alkaline Batteries, 10-Year Shelf Life, Easy to Open Value Pack
+            {product.product_title}
           </div>
           <a href="#">Visit the Amazon Basics Store</a>
           <div className="flexbox flex-row rating">
@@ -41,11 +42,11 @@ export default function PhotoGallery() {
             <a><i className="fas fa-star-half-alt"></i></a>
           </div>
           <div className="product-left">
-            10 Items Left
+          {product.stock} Items Left
           </div>
           <div className="product-amount">
-            277
-            <span className="currency">$</span>
+          {product.price} 
+            <span className="currency">{product.currency_code}</span>
           </div>
           <div className="flexbox flex-row gap-2">
             <div className="select">
@@ -62,11 +63,7 @@ export default function PhotoGallery() {
           </div>
           <div className="product-description-heading">Description</div>
           <div className="product-description">
-            IN THE BOX: 48-pack of 1.5 volt AA alkaline batteries for reliable performance across a wide range of devices
-            DEVICE COMPATIBLE: Ideal for game controllers, toys, flashlights, digital cameras, clocks, and more
-            DESIGNED TO LAST: 10-year leak-free shelf life; store for emergencies or use right away
-            EASY USE & STORAGE: Ships in Certified Frustration-Free Packaging
-            SINGLE USE: These batteries are NOT rechargeable; for rechargeable options, check out Amazon Basics rechargeable batteries
+            {product.product_description}
           </div>
           <div className="social-share-heading">SHARE THIS</div>
           <div className="social-share flexbox flex-row">
@@ -77,7 +74,8 @@ export default function PhotoGallery() {
           </div>
         </div>
       </div>
-
+      <ProductRecommendation products={products}></ProductRecommendation>
     </div>
   )
 }
+export default React.memo(_PhotoGallery)

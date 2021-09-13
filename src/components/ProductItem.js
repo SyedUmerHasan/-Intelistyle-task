@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function ProductItem(props) {
     const {
@@ -14,13 +15,13 @@ export default function ProductItem(props) {
     } = props
     return (
         <div className="product-item flexbox flex-column  justify-content-space-between">
-            <div className="product-image">
-                <img src={image_urls} />
-            </div>
+            <Link to={"/details/"+product_id} className="product-image">
+                <img src={image_urls} className="product-image"/>
+            </Link>
             <div className="product-item-content">
-                <div className="product-item-heading">
+                <Link to={"/details/"+product_id} className="product-item-heading">
                     { product_title || "Amazon Basics 48 Pack AA High-Performance Alkaline Batteries, 10-Year Shelf Life, Easy to Open Value Pack"}
-                </div>
+                </Link>
                 <div className="flexbox flex-row justify-content-space-between">
                     <div className="flexbox flex-row rating">
                         <a><i className="fas fa-star"></i></a>
