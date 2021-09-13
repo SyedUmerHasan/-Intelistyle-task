@@ -156,3 +156,24 @@ a {
 .grid-columns-5{
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
+
+
+/* Media Query */
+
+@media screen and (min-width: 800px) and (max-width: 1100px) {
+  .grid-columns-tablet-1 {
+    grid-template-columns: 1fr;
+  }
+  .grid-columns-tablet-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .grid-columns-mobile-1 {
+    grid-template-columns: 1fr;
+  }
+  .grid-columns-mobile-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}

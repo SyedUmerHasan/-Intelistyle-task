@@ -34,20 +34,6 @@
   font-weight: 500;
 }
 
-/* Media Query */
-
-@media screen and (max-width: 800px) {
-  .grid-columns-mobile-1 {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .grid-columns-mobile-1 {
-    grid-template-columns: 1fr;
-  }
-}
-
 .product-item .product-image > img{
     width: 100%;
 }

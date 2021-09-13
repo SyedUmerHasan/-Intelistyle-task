@@ -34,11 +34,11 @@ export default function PhotoGallery() {
           </div>
           <a href="#">Visit the Amazon Basics Store</a>
           <div className="flexbox flex-row rating">
-            <a><i class="fas fa-star"></i></a>
-            <a><i class="fas fa-star"></i></a>
-            <a><i class="fas fa-star"></i></a>
-            <a><i class="fas fa-star"></i></a>
-            <a><i class="fas fa-star-half-alt"></i></a>
+            <a><i className="fas fa-star"></i></a>
+            <a><i className="fas fa-star"></i></a>
+            <a><i className="fas fa-star"></i></a>
+            <a><i className="fas fa-star"></i></a>
+            <a><i className="fas fa-star-half-alt"></i></a>
           </div>
           <div className="product-left">
             10 Items Left
@@ -48,14 +48,14 @@ export default function PhotoGallery() {
             <span className="currency">$</span>
           </div>
           <div className="flexbox flex-row gap-2">
-            <div class="select">
+            <div className="select">
               <select>
                 <option value="1">Size: S</option>
                 <option value="2">Size: M</option>
                 <option value="3">Size: L</option>
               </select>
             </div>
-            <div class="quantity">
+            <div className="quantity">
               <input type="number" min="1" max="9" step="1" value="1" />
             </div>
             <button className="add-to-cart">Add to Cart</button>
@@ -70,10 +70,10 @@ export default function PhotoGallery() {
           </div>
           <div className="social-share-heading">SHARE THIS</div>
           <div className="social-share flexbox flex-row">
-            <div><i class="fab fa-facebook"></i></div>
-            <div><i class="fab fa-instagram"></i></div>
-            <div><i class="fab fa-twitter"></i></div>
-            <div><i class="fab fa-google"></i></div>
+            <div><i className="fab fa-facebook"></i></div>
+            <div><i className="fab fa-instagram"></i></div>
+            <div><i className="fab fa-twitter"></i></div>
+            <div><i className="fab fa-google"></i></div>
           </div>
         </div>
       </div>
