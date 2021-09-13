@@ -49,41 +49,58 @@ a {
   flex-direction: row;
 }
 
-.flex-item-center{
+.align-items-center{
   align-items: center;
 }
 
-.flex-item-end{
+.align-items-end{
   align-items: flex-end;
 }
 
-.flex-item-start{
+.align-items-start{
   align-items: flex-start;
 }
 
-.flex-content-center{
+.align-content-center{
   align-content: center;
 }
 
-.flex-content-end{
+.align-content-end{
   align-content: flex-end;
 }
 
-.flex-content-start{
+.align-content-start{
   align-content: flex-start;
 }
 
-.flex-justify-content-center{
+.justify-content-center{
   justify-content: center;
 }
 
-.flex-justify-content-end{
+.justify-content-end{
   justify-content: flex-end;
 }
 
-.flex-justify-content-start{
+.justify-content-start{
   justify-content: flex-start;
 }
+.justify-content-space-between{
+  justify-content: space-between;
+}
+
+
+.justify-items-center{
+  justify-items: center;
+}
+
+.justify-items-end{
+  justify-items: flex-end;
+}
+
+.justify-items-start{
+  justify-items: flex-start;
+}
+
 
 .flex-grow-1 {
   flex-grow: 1;
@@ -98,21 +115,44 @@ a {
   flex-grow: 4;
 }
 
-.flex-gap-05{
+.gap-05{
   gap: 0.5rem;
 }
-.flex-gap-1{
+.gap-1{
   gap: 1rem;
 }
-.flex-gap-15{
+.gap-15{
   gap: 1.5rem;
 }
-.flex-gap-2{
+.gap-2{
   gap: 2rem;
 }
-.flex-gap-25{
+.gap-25{
   gap: 2.5rem;
 }
-.flex-gap-3{
+.gap-3{
   gap: 3rem;
+}
+
+
+/* Grid Box - CSS */
+
+.grid{
+  display: grid;
+}
+
+.grid-columns-1{
+  grid-template-columns: 1fr;
+}
+.grid-columns-2{
+  grid-template-columns: 1fr 1fr;
+}
+.grid-columns-3{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.grid-columns-4{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.grid-columns-5{
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
