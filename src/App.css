@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+:root { 
+  font-size: 16px;
+  font-family: 'Open Sans';
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #232323;
+  --bg-secondary: #141418;
+  --gray: #34495e;
+  --darkgray: #2c3e50;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  display: block;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Flexbox CSS */
+.flexbox{
   display: flex;
+}
+
+.block{
+  display: block;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.none{
+  display: none;
+}
+
+.flex-column{
   flex-direction: column;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-item-center{
   align-items: center;
+}
+
+.flex-item-end{
+  align-items: flex-end;
+}
+
+.flex-item-start{
+  align-items: flex-start;
+}
+
+.flex-content-center{
+  align-content: center;
+}
+
+.flex-content-end{
+  align-content: flex-end;
+}
+
+.flex-content-start{
+  align-content: flex-start;
+}
+
+.flex-justify-content-center{
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.flex-justify-content-end{
+  justify-content: flex-end;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flex-justify-content-start{
+  justify-content: flex-start;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+.flex-grow-2 {
+  flex-grow: 2;
+}
+.flex-grow-3 {
+  flex-grow: 3;
+}
+.flex-grow-4 {
+  flex-grow: 4;
+}
+
+.flex-gap-05{
+  gap: 0.5rem;
+}
+.flex-gap-1{
+  gap: 1rem;
+}
+.flex-gap-15{
+  gap: 1.5rem;
+}
+.flex-gap-2{
+  gap: 2rem;
+}
+.flex-gap-25{
+  gap: 2.5rem;
+}
+.flex-gap-3{
+  gap: 3rem;
 }
