@@ -3,31 +3,33 @@ import "../styles/Shop.css"
 import ProductItem from './ProductItem';
 const dataLimit = 20;
 const pageLimit = 10;
+var _category = ""
+var _brand = ""
+var _gender = ""
+var _title = ""
 
 const Shop = ({ products, category, source, gender }) => {
     const [page, setPage] = useState(1)
     const [update, setUpdate] = useState(0)
     let [currentProducts, updateCurrentProducts] = useState(products)
 
-    let _category = ""
-    let _brand = ""
-    let _gender = ""
-    let _title = ""
-
     React.useEffect(() => {
         if (products) {
             _category = new URLSearchParams(window.location.search).get("category")
             _brand = new URLSearchParams(window.location.search).get("brand")
             _gender = new URLSearchParams(window.location.search).get("gender")
-            _title = new URLSearchParams(window.location.search).get("title")
+            _title = new URLSearchParams(window.location.search).get("title")?.toLowerCase()
 
             updateCurrentProducts(() => {
                 return Object.values(products)
                     .filter((eachProduct) => {
-                        return (_title && eachProduct.product_title.includes(_title) ||
-                            (_gender && eachProduct.gender === _gender) ||
-                            (_category && eachProduct.product_categories[0] === _category) ||
-                            (_brand && eachProduct.brand === _brand))
+                        const titleArray = _title.split(" ")
+                        const titleStatus = titleArray.find((eachTitle)=>{ return eachProduct.product_title.toLowerCase().includes(eachTitle)})
+                        // return ((!_title || eachProduct.product_title.toLowerCase().includes(_title)) &&
+                        return ((!_title || titleStatus) &&
+                            (!_gender || (_gender == "All" || eachProduct.gender === _gender)) &&
+                            (!_category || (_category == "All" || eachProduct.product_categories[0] === _category)) &&
+                            (!_brand || (_brand == "All" || eachProduct.brand === _brand)))
                     })
             })
         }
@@ -54,6 +56,21 @@ const Shop = ({ products, category, source, gender }) => {
             <div id="shop-grid" className="grid gap-3">
                 <div id="filter-area">
                     <div>
+                        <h3>Search</h3>
+                        <input autocomplete="false" id="search-items"
+                            type="text" name="search" placeholder="Search.."
+                            onKeyUp={(e) => {
+                                setTimeout(() => {
+                                    let searchParams = new URLSearchParams(window.location.search);
+                                    searchParams.set("title", e.target.value);
+                                    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
+                                    window.history.pushState({ path: newurl }, '', newurl);
+                                    setUpdate((update) => update + 1)
+                                }, 1000)
+                            }}
+                        />
+                    </div>
+                    <div>
                         <h3>Category</h3>
                         <div className="select">
                             <select name="category" onChange={(e) => {
@@ -64,7 +81,7 @@ const Shop = ({ products, category, source, gender }) => {
                                 setUpdate((update) => update + 1)
                             }}>
                                 {Array.from(category).map((value) => {
-                                    return <option value={value}>{value}</option>
+                                    return <option value={value} selected={_category == value ? true : false}>{value}</option>
                                 })}
                             </select>
                         </div>
@@ -80,13 +97,13 @@ const Shop = ({ products, category, source, gender }) => {
                                 setUpdate((update) => update + 1)
                             }}>
                                 {Array.from(gender).map((value) => {
-                                    return <option value={value}>{value}</option>
+                                    return <option value={value} selected={_gender == value ? true : false}>{value}</option>
                                 })}
                             </select>
                         </div>
                     </div>
                     <div>
-                        <h3>Source</h3>
+                        <h3>Brand</h3>
                         <div className="select">
                             <select name="brand" onChange={(e) => {
                                 let searchParams = new URLSearchParams(window.location.search);
@@ -96,7 +113,7 @@ const Shop = ({ products, category, source, gender }) => {
                                 setUpdate((update) => update + 1)
                             }}>
                                 {Array.from(source).map((value) => {
-                                    return <option value={value}>{value}</option>
+                                    return <option value={value} selected={_brand == value ? true : false}>{value}</option>
                                 })}
                             </select>
                         </div>

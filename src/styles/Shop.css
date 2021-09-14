@@ -6,6 +6,25 @@
   margin: auto;
 }
 
+#search-items{
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 24px;
+  background-color: white;
+  background-image: url('../searchicon.png');
+  background-position: 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+#search-items:focus{
+  width: 100%;
+}
+
 #shop-grid select {
   /* Reset Select */
   appearance: none;
