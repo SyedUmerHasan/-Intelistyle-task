@@ -21,6 +21,20 @@
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
+.amount-filter{
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 24px;
+  background-color: white;
+  background-position: 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 0 12px 0;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
 #search-items:focus{
   width: 100%;
 }

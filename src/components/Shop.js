@@ -7,6 +7,8 @@ var _category = ""
 var _brand = ""
 var _gender = ""
 var _title = ""
+var _min = ""
+var _max = ""
 
 const Shop = ({ products, category, source, gender }) => {
     const [page, setPage] = useState(1)
@@ -19,17 +21,21 @@ const Shop = ({ products, category, source, gender }) => {
             _brand = new URLSearchParams(window.location.search).get("brand")
             _gender = new URLSearchParams(window.location.search).get("gender")
             _title = new URLSearchParams(window.location.search).get("title")?.toLowerCase()
+            _min = new URLSearchParams(window.location.search).get("min")
+            _max = new URLSearchParams(window.location.search).get("max")
 
             updateCurrentProducts(() => {
                 return Object.values(products)
                     .filter((eachProduct) => {
                         const titleArray = _title.split(" ")
-                        const titleStatus = titleArray.find((eachTitle)=>{ return eachProduct.product_title.toLowerCase().includes(eachTitle)})
+                        const titleStatus = titleArray.find((eachTitle) => { return eachProduct.product_title.toLowerCase().includes(eachTitle) })
                         // return ((!_title || eachProduct.product_title.toLowerCase().includes(_title)) &&
                         return ((!_title || titleStatus) &&
                             (!_gender || (_gender == "All" || eachProduct.gender === _gender)) &&
                             (!_category || (_category == "All" || eachProduct.product_categories[0] === _category)) &&
-                            (!_brand || (_brand == "All" || eachProduct.brand === _brand)))
+                            (!_brand || (_brand == "All" || eachProduct.brand === _brand))) && 
+                            (!_min || eachProduct.price > _min) &&
+                            (!_max || eachProduct.price < _max)
                     })
             })
         }
@@ -116,6 +122,32 @@ const Shop = ({ products, category, source, gender }) => {
                                     return <option value={value} selected={_brand == value ? true : false}>{value}</option>
                                 })}
                             </select>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Price</h3>
+                        <div className="flexbox flex-row gap-2">
+                            <input autocomplete="false" className="amount-filter"
+                                type="number" placeholder="Min"
+                                onKeyUp={(e) => {
+                                    let searchParams = new URLSearchParams(window.location.search);
+                                    searchParams.set("min", e.target.value);
+                                    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
+                                    window.history.pushState({ path: newurl }, '', newurl);
+                                    setUpdate((update) => update + 1)
+                                }}
+                            />
+                            <input autocomplete="false" className="amount-filter"
+                                type="number" placeholder="Max"
+                                onKeyUp={(e) => {
+                                    let searchParams = new URLSearchParams(window.location.search);
+                                    searchParams.set("max", e.target.value);
+                                    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
+                                    window.history.pushState({ path: newurl }, '', newurl);
+                                    setUpdate((update) => update + 1)
+                                }}
+                            />
+
                         </div>
                     </div>
                 </div>
