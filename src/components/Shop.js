@@ -27,8 +27,8 @@ const Shop = ({ products, category, source, gender }) => {
             updateCurrentProducts(() => {
                 return Object.values(products)
                     .filter((eachProduct) => {
-                        const titleArray = _title.split(" ")
-                        const titleStatus = titleArray.find((eachTitle) => { return eachProduct.product_title.toLowerCase().includes(eachTitle) })
+                        const titleArray = _title?.split(" ")
+                        const titleStatus = titleArray?.find((eachTitle) => { return eachProduct.product_title.toLowerCase().includes(eachTitle) })
                         // return ((!_title || eachProduct.product_title.toLowerCase().includes(_title)) &&
                         return ((!_title || titleStatus) &&
                             (!_gender || (_gender == "All" || eachProduct.gender === _gender)) &&
